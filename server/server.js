@@ -3,9 +3,11 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 const path = require('path');
 const db = require('../database/db.js');
+const cors = require('cors');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 app.get('/api/audienceReviews', (req,res) => {
   db.getReviews((err, results) => {
